@@ -4,14 +4,14 @@ public class Recipe {
 
     private double cookTime;
     private String recipeName;
-    ArrayList<String> instructions = new ArrayList<String>();
-    ArrayList<String> ingredients = new ArrayList<String>();
+    ArrayList<String> instructions = new ArrayList<>();
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
 
     public Recipe() {
 
     }
 
-    public Recipe(String Name, ArrayList<String> ingredients, ArrayList<String> instructions, double cookTime) {
+    public Recipe(String Name, ArrayList<Ingredient> ingredients, ArrayList<String> instructions, double cookTime) {
         this.cookTime = cookTime;
         this.ingredients = ingredients;
         this.instructions = instructions;
@@ -26,7 +26,7 @@ public class Recipe {
         return recipeName;
     }
 
-    public ArrayList<String> getIngredients() {
+    public ArrayList<Ingredient> getIngredients() {
         return ingredients;
     }
 

@@ -11,29 +11,30 @@ public class Main {
         boolean wantsToEat = true;
         do {
             System.out.println("Cook Book");
-        System.out.println();
-        System.out.println("What would you like to do?");
-        System.out.println("1) Add Recipe");
-        System.out.println("2) View Recipe");
-        System.out.println("3) List All Recipes");
-        System.out.println("4) Exit");
-        System.out.print(": ");
-        int choice = s.nextInt();
-        s.nextLine();
-        switch (choice) {
-            case 1:
-                promptAddRecipe(cookBook, s);
-                break;
-            case 2:
-                promptViewRecipe(cookBook, s);
-                break;
-            case 3:
-                for (Recipe recipe : cookBook) {
-                    System.out.println(recipe);
-                }
-            default:
-                wantsToEat = false;
-        }
+            System.out.println();
+            System.out.println("What would you like to do?");
+            System.out.println("1) Add Recipe");
+            System.out.println("2) View Recipe");
+            System.out.println("3) List All Recipes");
+            System.out.println("4) Exit");
+            System.out.print(": ");
+            int choice = s.nextInt();
+            s.nextLine();
+            switch (choice) {
+                case 1:
+                    promptAddRecipe(cookBook, s);
+                    break;
+                case 2:
+                    promptViewRecipe(cookBook, s);
+                    break;
+                case 3:
+                    for (Recipe recipe : cookBook) {
+                        System.out.println(recipe);
+                    }
+                    break;
+                default:
+                    wantsToEat = false;
+            }
         } while (wantsToEat);
     }
 
@@ -52,16 +53,22 @@ public class Main {
         System.out.print("Name: ");
         String name = s.nextLine();
         System.out.print("Ingredients: ");
-        ArrayList<String> ingredients = new ArrayList<>();
-        String i = s.nextLine();
-        while (!i.equals("-1")) {
-            ingredients.add(i);
+        ArrayList<Ingredient> ingredients = new ArrayList<>();
+        double amount = s.nextDouble();
+        String units = s.next();
+        String ingredientName = s.nextLine();
+        while (amount != -1) {
+            ingredients.add(new Ingredient(amount, units, ingredientName));
             System.out.println("Next Ingredient: (-1 to end) ");
-            i = s.nextLine();
+            amount = s.nextDouble();
+            if (amount == -1) break;
+            units = s.next();
+            ingredientName = s.nextLine();
         }
+        s.nextLine();
         System.out.print("Instructions: ");
         ArrayList<String> instructions = new ArrayList<>();
-        i = s.nextLine();
+        String i = s.nextLine();
         while (!i.equals("-1")) {
             instructions.add(i);
             System.out.println("Next Instruction: (-1 to end) ");
